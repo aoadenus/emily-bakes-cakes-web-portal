@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customer Added - Emily Bakes Cakes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #F8EBD7 0%, #E9E9E9 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #2B2B2B;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #4CAF50;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header .checkmark {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .customer-summary {
+            background: #F8EBD7;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .customer-summary h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            color: #C44569;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E0C9A6;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #E0C9A6;
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .summary-value {
+            color: #333;
+        }
+
+        .preferred-badge {
+            display: inline-block;
+            background: linear-gradient(135deg, #FFD54F 0%, #FFC107 100%);
+            color: #5D4037;
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
+        }
+
+        .info-box {
+            background: #E3F2FD;
+            border-left: 4px solid #1565C0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .info-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: #1565C0;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #C44569;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #A33854;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #C44569;
+            border: 2px solid #C44569;
+        }
+
+        .btn-secondary:hover {
+            background: #FFF7F9;
+        }
+
+        @media (max-width: 600px) {
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="checkmark">✓</div>
+            <h1>Customer Added!</h1>
+            <p>The customer has been successfully saved</p>
+        </div>
+
+        <div class="content">
+            <div class="customer-summary">
+                <h2>Customer Details</h2>
+                <div id="summaryContent">
+                    <p style="color: #666;">Loading customer details...</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>What's Next?</h3>
+                <p>
+                    The customer is now in your database and can be selected when creating new orders. 
+                    You can view and edit customer information from the Customers page.
+                </p>
+            </div>
+
+            <div class="actions">
+                <a href="new-customer.html" class="btn btn-primary">Add Another Customer</a>
+                <a href="staff-customers.html" class="btn btn-secondary">View All Customers</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadCustomerSummary() {
+            const summaryContent = document.getElementById('summaryContent');
+            const customerDataStr = localStorage.getItem('lastNewCustomer');
+
+            if (!customerDataStr) {
+                summaryContent.innerHTML = '<p style="color: #C44569;">No customer data found.</p>';
+                return;
+            }
+
+            try {
+                const customer = JSON.parse(customerDataStr);
+
+                let html = '';
+
+                const fullName = [customer.firstName, customer.middleInit, customer.lastName]
+                    .filter(Boolean)
+                    .join(' ');
+
+                html += `
+                    <div class="summary-row">
+                        <span class="summary-label">Customer ID</span>
+                        <span class="summary-value">${customer.custId}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Name</span>
+                        <span class="summary-value">${fullName}</span>
+                    </div>
+                `;
+
+                if (customer.companyName) {
+                    html += `
+                        <div class="summary-row">
+                            <span class="summary-label">Company</span>
+                            <span class="summary-value">${customer.companyName}</span>
+                        </div>
+                    `;
+                }
+
+                const typeLabel = customer.custType === '2' ? 'Corporate' : 'Retail';
+                html += `
+                    <div class="summary-row">
+                        <span class="summary-label">Type</span>
+                        <span class="summary-value">${typeLabel}</span>
+                    </div>
+                `;
+
+                html += `
+                    <div class="summary-row">
+                        <span class="summary-label">Phone</span>
+                        <span class="summary-value">${customer.mobilePhone}</span>
+                    </div>
+                    <div class="summary-row">
+                        <span class="summary-label">Email</span>
+                        <span class="summary-value">${customer.email}</span>
+                    </div>
+                `;
+
+                const address = [customer.addrLine1, customer.state, customer.zipCode]
+                    .filter(Boolean)
+                    .join(', ');
+                
+                html += `
+                    <div class="summary-row">
+                        <span class="summary-label">Address</span>
+                        <span class="summary-value">${address}</span>
+                    </div>
+                `;
+
+                if (customer.preferredCustomer === 'Y') {
+                    html += `
+                        <div class="summary-row">
+                            <span class="summary-label">Status</span>
+                            <span class="summary-value"><span class="preferred-badge">⭐ Preferred Customer</span></span>
+                        </div>
+                    `;
+                }
+
+                summaryContent.innerHTML = html;
+
+            } catch (e) {
+                console.error('Error parsing customer data:', e);
+                summaryContent.innerHTML = '<p style="color: #C44569;">Error loading customer details.</p>';
+            }
+        }
+
+        loadCustomerSummary();
+    </script>
+</body>
+</html>

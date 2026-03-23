@@ -3,83 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="refresh" content="0; url=order-form-wizard.html">
-    <script>window.location.href = 'order-form-wizard.html';</script>
-    <title>Redirecting - Emily Bakes Cakes</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #F8EBD7 0%, #E9E9E9 100%);
-        }
-        .redirect-message {
-            text-align: center;
-            padding: 40px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .redirect-message h1 {
-            color: #C44569;
-            margin-bottom: 20px;
-        }
-        .redirect-message a {
-            color: #C44569;
-            text-decoration: none;
-            font-weight: 600;
-        }
-    </style>
-</head>
-<body>
-    <div class="redirect-message">
-        <h1>🎂 Redirecting to New Order Wizard...</h1>
-        <p>If you're not redirected automatically, <a href="order-form-wizard.html">click here</a>.</p>
-    </div>
-</body>
-</html>
+    <title>Cake Order Form - Emily Bakes Cakes</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
-    <script src="dashboard/js/unified-mock-data.js"></script>
     <style>
-        body {
-            font-family: Arial, sans-serif;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            background: linear-gradient(135deg, #F8EBD7 0%, #E9E9E9 100%);
-        }
-        .redirect-message {
-            text-align: center;
-            padding: 40px;
-            background: white;
-            border-radius: 12px;
-            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
-        }
-        .redirect-message h1 {
-            color: #C44569;
-            margin-bottom: 20px;
-        }
-        .redirect-message a {
-            color: #C44569;
-            text-decoration: none;
-            font-weight: 600;
-        }
-    </style>
-</head>
-<body>
-    <div class="redirect-message">
-        <h1>🎂 Redirecting to New Order Wizard...</h1>
-        <p>If you're not redirected automatically, <a href="../order-form-wizard.html">click here</a>.</p>
-    </div>
-</body>
-</html>
         * {
             margin: 0;
             padding: 0;
@@ -338,7 +266,6 @@
             }
         }
 
-        /* Make the Full Name field and Phone align on larger screens */
         .form-row.name-row {
             display: flex;
             align-items: flex-start;
@@ -370,7 +297,6 @@
             }
         }
 
-        /* Make the Email input match the Full Name width on larger screens */
         .form-row .form-group input[name="customer_email"] {
             width: 380px;
             max-width: 100%;
@@ -382,7 +308,6 @@
             }
         }
 
-        /* Restore address field to original (full width) on larger screens */
         .form-row .form-group input[name="customer_address"] {
             width: 100%;
             max-width: 100%;
@@ -394,7 +319,6 @@
             }
         }
 
-        /* Custom sizes for customization inputs */
         .input-small input {
             width: 240px;
             max-width: 100%;
@@ -412,18 +336,499 @@
             }
         }
 
-        /* Style for select when default flavor (Yellow) is selected to appear gray */
         select.select-placeholder {
             color: #6b6b6b;
             background: #f4f4f4;
+        }
+
+        #layersContainer .section {
+            background: #FAFAFA;
+            padding: 25px;
+            border-radius: 8px;
+            border: 2px solid #F8EBD7;
+        }
+
+        #layersContainer .section-title {
+            color: #8B3A5D;
+            font-size: 20px;
+        }
+
+        .customer-lookup-box {
+            background: linear-gradient(135deg, #FFF7F9 0%, #FFFFFF 100%);
+            border: 2px solid #F8EBD7;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 25px;
+        }
+
+        .customer-lookup-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #C44569;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .search-row {
+            display: flex;
+            gap: 12px;
+            align-items: flex-end;
+            flex-wrap: wrap;
+        }
+
+        .search-input-wrapper {
+            flex: 1;
+            min-width: 250px;
+            position: relative;
+        }
+
+        .search-input-wrapper input {
+            width: 100%;
+            padding: 12px 15px;
+            border: 2px solid #E9E9E9;
+            border-radius: 6px;
+            font-size: 15px;
+            transition: border-color 0.3s;
+        }
+
+        .search-input-wrapper input:focus {
+            outline: none;
+            border-color: #C44569;
+        }
+
+        .search-input-wrapper::before {
+            content: "";
+            position: absolute;
+            left: 12px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 16px;
+        }
+
+        .btn-search, .btn-add-customer {
+            padding: 12px 20px;
+            border: none;
+            border-radius: 6px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .btn-search {
+            background: #C44569;
+            color: white;
+        }
+
+        .btn-search:hover {
+            background: #A33854;
+        }
+
+        .btn-add-customer {
+            background: white;
+            color: #C44569;
+            border: 2px solid #C44569;
+        }
+
+        .btn-add-customer:hover {
+            background: #FFF7F9;
+        }
+
+        .search-results {
+            position: absolute;
+            top: 100%;
+            left: 0;
+            right: 0;
+            background: white;
+            border: 2px solid #C44569;
+            border-radius: 8px;
+            max-height: 300px;
+            overflow-y: auto;
+            z-index: 100;
+            box-shadow: 0 8px 24px rgba(196, 69, 105, 0.2);
+            display: none;
+        }
+
+        .search-results.active {
+            display: block;
+        }
+
+        .search-result-item {
+            padding: 12px 15px;
+            cursor: pointer;
+            border-bottom: 1px solid #F0F0F0;
+            transition: background 0.2s;
+        }
+
+        .search-result-item:last-child {
+            border-bottom: none;
+        }
+
+        .search-result-item:hover {
+            background: #FFF7F9;
+        }
+
+        .search-result-item .customer-name {
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 4px;
+        }
+
+        .search-result-item .customer-details {
+            font-size: 13px;
+            color: #666;
+        }
+
+        .search-result-item .customer-type-badge {
+            display: inline-block;
+            padding: 2px 8px;
+            border-radius: 12px;
+            font-size: 11px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .search-result-item .customer-type-badge.retail {
+            background: #E3F2FD;
+            color: #1565C0;
+        }
+
+        .search-result-item .customer-type-badge.corporate {
+            background: #FFF3E0;
+            color: #E65100;
+        }
+
+        .no-results {
+            padding: 15px;
+            text-align: center;
+            color: #666;
+        }
+
+        .selected-customer {
+            background: #E8F5E9;
+            border: 2px solid #4CAF50;
+            border-radius: 8px;
+            padding: 15px;
+            margin-top: 15px;
+            display: none;
+        }
+
+        .selected-customer.active {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .selected-customer-info {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .selected-customer-info .check-icon {
+            color: #4CAF50;
+            font-size: 20px;
+        }
+
+        .selected-customer-info .customer-name {
+            font-weight: 600;
+            color: #333;
+        }
+
+        .btn-clear-customer {
+            background: none;
+            border: none;
+            color: #C44569;
+            cursor: pointer;
+            font-size: 14px;
+            text-decoration: underline;
+        }
+
+        .modal-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.5);
+            display: none;
+            justify-content: center;
+            align-items: center;
+            z-index: 1000;
+            padding: 20px;
+        }
+
+        .modal-overlay.active {
+            display: flex;
+        }
+
+        .modal {
+            background: white;
+            border-radius: 12px;
+            width: 100%;
+            max-width: 700px;
+            max-height: 90vh;
+            overflow-y: auto;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
+        }
+
+        .modal-header {
+            background: linear-gradient(135deg, #C44569 0%, #a83a54 100%);
+            color: white;
+            padding: 20px 25px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 10;
+        }
+
+        .modal-header h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0;
+        }
+
+        .modal-close {
+            background: none;
+            border: none;
+            color: white;
+            font-size: 28px;
+            cursor: pointer;
+            line-height: 1;
+        }
+
+        .modal-body {
+            padding: 25px;
+        }
+
+        .modal-section {
+            margin-bottom: 25px;
+        }
+
+        .modal-section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 700;
+            color: #C44569;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            padding-bottom: 8px;
+            border-bottom: 2px solid rgba(196, 69, 105, 0.2);
+        }
+
+        .modal-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            margin-bottom: 15px;
+        }
+
+        .modal-row.full {
+            grid-template-columns: 1fr;
+        }
+
+        .modal-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .modal-group label {
+            font-size: 13px;
+            font-weight: 600;
+            color: #333;
+            margin-bottom: 6px;
+        }
+
+        .modal-group input,
+        .modal-group select,
+        .modal-group textarea {
+            padding: 10px 12px;
+            border: 2px solid #E9E9E9;
+            border-radius: 6px;
+            font-size: 14px;
+            transition: border-color 0.3s;
+        }
+
+        .modal-group input:focus,
+        .modal-group select:focus,
+        .modal-group textarea:focus {
+            outline: none;
+            border-color: #C44569;
+        }
+
+        .modal-group textarea {
+            min-height: 80px;
+            resize: vertical;
+        }
+
+        .modal-footer {
+            padding: 20px 25px;
+            background: #F9F9F9;
+            display: flex;
+            justify-content: flex-end;
+            gap: 12px;
+            border-top: 1px solid #E9E9E9;
+        }
+
+        .btn-modal {
+            padding: 12px 24px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .btn-modal-primary {
+            background: linear-gradient(135deg, #C44569 0%, #a83a54 100%);
+            color: white;
+            box-shadow: 0 4px 12px rgba(196, 69, 105, 0.3);
+        }
+
+        .btn-modal-primary:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 6px 16px rgba(196, 69, 105, 0.4);
+        }
+
+        .btn-modal-secondary {
+            background: #f0f0f0;
+            color: #333;
+            border: 2px solid #e0e0e0;
+        }
+
+        .btn-modal-secondary:hover {
+            background: #e8e8e8;
+            border-color: #C44569;
+            color: #C44569;
+        }
+
+        .preferred-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            padding: 10px;
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFFFFF 100%);
+            border: 2px solid #FFD54F;
+            border-radius: 8px;
+        }
+
+        .preferred-checkbox input {
+            width: auto;
+            margin: 0;
+        }
+
+        .preferred-checkbox label {
+            margin: 0;
+        }
+
+        .step-number {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: 28px;
+            height: 28px;
+            background: linear-gradient(135deg, #C44569 0%, #a83a54 100%);
+            color: white;
+            border-radius: 50%;
+            font-size: 14px;
+            font-weight: 700;
+            margin-right: 10px;
+            box-shadow: 0 2px 8px rgba(196, 69, 105, 0.3);
+        }
+
+        .form-subsection {
+            background: #FAFAFA;
+            border: 1px solid #E9E9E9;
+            border-radius: 12px;
+            padding: 20px 24px;
+            margin-top: 20px;
+        }
+
+        .form-subsection h3 {
+            display: flex;
+            align-items: center;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            color: #333;
+            margin: 0 0 16px 0;
+            padding-bottom: 12px;
+            border-bottom: 2px solid #E9E9E9;
+        }
+
+        .customer-lookup-box h3 {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .customer-placeholder {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 40px 20px;
+            color: #999;
+            text-align: center;
+        }
+
+        .customer-placeholder .placeholder-icon {
+            font-size: 48px;
+            margin-bottom: 12px;
+            opacity: 0.5;
+        }
+
+        .customer-placeholder p {
+            font-size: 15px;
+            margin: 0;
+            color: #888;
+        }
+
+        .readonly-field {
+            background-color: #F5F5F5 !important;
+            color: #555 !important;
+            cursor: not-allowed;
+            border-color: #E0E0E0 !important;
+        }
+
+        .readonly-field:focus {
+            border-color: #E0E0E0 !important;
+            outline: none;
+        }
+
+        @media (max-width: 768px) {
+            .search-row {
+                flex-direction: column;
+            }
+
+            .search-input-wrapper {
+                width: 100%;
+            }
+
+            .modal-row {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
     <div class="container">
-        <a href="javascript:history.back()" class="back-btn" aria-label="Back to Dashboard">← Back</a>
+        <a href="staff-dashboard.html" class="back-btn" aria-label="Back to Dashboard">← Dashboard</a>
         <div class="header">
-            <img src="dashboard/images/logo.png" alt="Emily Bakes Cakes logo" class="logo" />
+            <img src="images/logo.png" alt="Emily Bakes Cakes logo" class="logo" />
             <div class="header-text">
                 <h1>Cake Order Form</h1>
                 <p>Customize your perfect celebration cake</p>
@@ -436,49 +841,107 @@
             </div>
 
             <form id="orderForm">
-                <!-- Customer Information -->
                 <div class="section">
                     <h2 class="section-title">Customer Information</h2>
+
+                    <div class="customer-lookup-box">
+                        <h3><span class="step-number">1</span> Find or Add Customer</h3>
+                        <div class="search-row">
+                            <div class="search-input-wrapper">
+                                <input type="text" id="customerSearch" placeholder="Search by name or phone number...">
+                                <div class="search-results" id="searchResults"></div>
+                            </div>
+                            <button type="button" class="btn-search" onclick="searchCustomers()">Search</button>
+                            <button type="button" class="btn-add-customer" onclick="openAddCustomerModal()">+ Add New Customer</button>
+                        </div>
+                        <div class="selected-customer" id="selectedCustomer">
+                            <div class="selected-customer-info">
+                                <span class="check-icon">✓</span>
+                                <span class="customer-name" id="selectedCustomerName"></span>
+                            </div>
+                            <button type="button" class="btn-clear-customer" onclick="clearSelectedCustomer()">Clear Selection</button>
+                        </div>
+                    </div>
                     
-                    <div class="form-row name-row">
-                        <div class="form-group">
-                            <label>Full Name <span class="required">*</span></label>
-                            <input type="text" name="customer_name" required>
+                    <div class="form-subsection" id="customerDetailsSection">
+                        <h3><span class="step-number">2</span> Customer Details</h3>
+                        
+                        <div class="customer-placeholder" id="customerPlaceholder">
+                            <div class="placeholder-icon">👤</div>
+                            <p>Select a customer above to view details</p>
                         </div>
+                        
+                        <div class="customer-details-content" id="customerDetailsContent" style="display: none;">
+                            <div class="form-row name-row">
+                                <div class="form-group">
+                                    <label>Full Name</label>
+                                    <input type="text" name="customer_name" class="readonly-field" readonly>
+                                </div>
 
-                        <div class="form-group">
-                            <label>Phone Number <span class="required">*</span></label>
-                            <input type="tel" name="customer_phone" required placeholder="123-456-7890" pattern="\d{3}-\d{3}-\d{4}" title="Format: 123-456-7890" inputmode="tel">
+                                <div class="form-group">
+                                    <label>Phone Number</label>
+                                    <input type="tel" name="customer_phone" class="readonly-field" readonly>
+                                </div>
+                            </div>
+
+                            <div class="form-row two-col">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" name="customer_email" class="readonly-field" readonly>
+                                </div>
+                                <div class="form-group">
+                                    <label style="display: flex; align-items: center; gap: 8px; padding-top: 28px;">
+                                        <input type="checkbox" name="preferred_customer" id="preferredCustomer" style="width: auto; margin: 0;">
+                                        Preferred Customer <small style="color:#666; font-weight: normal;">(10% discount)</small>
+                                    </label>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Address</label>
+                                    <input type="text" name="customer_address" class="readonly-field" readonly>
+                                </div>
+                            </div>
                         </div>
                     </div>
 
-                    <div class="form-row two-col">
-                        <div class="form-group">
-                            <label>Email</label>
-                            <input type="email" name="customer_email">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group">
-                            <label>Address <span class="required">*</span></label>
-                            <input type="text" name="customer_address" required placeholder="Street, City, State, ZIP">
-                        </div>
-                    </div>
-
-                    <div class="form-row two-col">
-                        <div class="form-group">
-                            <label>Pickup Date <span class="required">*</span></label>
-                            <input type="date" name="pickup_date" id="pickupDate" required>
-                        </div>
-                        <div class="form-group">
-                            <label>Pickup Time <span class="required">*</span></label>
-                            <input type="time" name="pickup_time" value="10:00" required>
+                    <div class="form-subsection">
+                        <h3><span class="step-number">3</span> Pickup Schedule</h3>
+                        <div class="form-row two-col">
+                            <div class="form-group">
+                                <label>Pickup Date <span class="required">*</span></label>
+                                <input type="date" name="pickup_date" id="pickupDate" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Pickup Time <span class="required">*</span></label>
+                                <input type="time" name="pickup_time" value="10:00" required>
+                            </div>
                         </div>
                     </div>
                 </div>
 
-                <!-- Cake Details -->
+                <div class="section">
+                    <h2 class="section-title">Employee Details</h2>
+                    
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label>Name of Staff Creating Order <span class="required">*</span></label>
+                            <select name="employee_name" id="employeeSelect" required>
+                                <option value="">Select staff...</option>
+                                <option value="Emily Bordeaux" data-id="642">Emily Bordeaux - Owner</option>
+                                <option value="James Wilson" data-id="679">James Wilson - Manager</option>
+                                <option value="Lea Thompson" data-id="686">Lea Thompson</option>
+                                <option value="Leonard Cooper" data-id="631">Leonard Cooper</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label>Staff ID</label>
+                            <input type="text" name="employee_id" id="employeeId" readonly>
+                        </div>
+                    </div>
+                </div>
+
                 <div class="section">
                     <h2 class="section-title">Cake Details</h2>
 
@@ -487,32 +950,249 @@
                             <label>Cake Size <span class="required">*</span></label>
                             <select name="size" id="cakeSize" required>
                                 <option value="">Select size...</option>
-                                <option value="6" data-price="20">6-inch Round Double Layer (Serves 4-6) - $20 <small style="color:#5A3825;">(default)</small></option>
-                                <option value="8" data-price="30">8-inch Round Double Layer (Serves 12-15) - $30</option>
-                                <option value="10" data-price="60">10-inch Round Double Layer (Serves 25-30) - $60</option>
-                                <option value="12" data-price="100">12-inch Round Double Layer (Serves 35) - $100</option>
-                                <option value="14" data-price="140">14-inch Round Double Layer (Serves 40) - $140</option>
-                                <option value="16" data-price="180">16-inch Round Double Layer (Serves 85) - $180</option>
-                                <option value="quarter" data-price="40">¼ Sheet Double Layer (Serves 15-20) - $40</option>
-                                <option value="half" data-price="100">½ Sheet Double Layer (Serves 30-50) - $100</option>
-                                <option value="full" data-price="200">Full Sheet Double Layer (Serves 90-100) - $200</option>
+                                <option value="6" data-price="20">6-inch Round (Serves 4-6) - $20 per layer</option>
+                                <option value="8" data-price="30">8-inch Round (Serves 12-15) - $30 per layer</option>
+                                <option value="10" data-price="60">10-inch Round (Serves 25-30) - $60 per layer</option>
+                                <option value="12" data-price="100">12-inch Round (Serves 35) - $100 per layer</option>
+                                <option value="14" data-price="140">14-inch Round (Serves 40) - $140 per layer</option>
+                                <option value="16" data-price="180">16-inch Round (Serves 85) - $180 per layer</option>
+                                <option value="quarter" data-price="40">¼ Sheet (Serves 15-20) - $40 per layer</option>
+                                <option value="half" data-price="100">½ Sheet (Serves 30-50) - $100 per layer</option>
+                                <option value="full" data-price="200">Full Sheet (Serves 90-100) - $200 per layer</option>
                             </select>
                         </div>
 
                         <div class="form-group">
+                            <label>Number of Layers <span class="required">*</span></label>
+                            <select name="num_layers" id="numLayers" required>
+                                <option value="">Select layers...</option>
+                                <option value="2" selected>2 Layers</option>
+                                <option value="3">3 Layers</option>
+                                <option value="4">4 Layers</option>
+                                <option value="5">5 Layers</option>
+                                <option value="6">6 Layers</option>
+                                <option value="7">7 Layers</option>
+                                <option value="8">8 Layers</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group input-medium">
                             <label>Occasion</label>
                             <input type="text" name="occasion" placeholder="e.g., Birthday, Wedding, Baby Shower">
                         </div>
                     </div>
+                </div>
+
+                <div id="layersContainer"></div>
+
+                <div class="section">
+                    <h2 class="section-title">Customization</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Special Instructions</label>
+                            <textarea name="special_instructions" placeholder="Any dietary restrictions, allergies, or special requests..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Reference Photos</label>
+                            <input type="file" name="reference_photos" accept="image/*" multiple>
+                            <small style="color:#666; margin-top:6px;">Upload one or more images for reference (optional).</small>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="price-display">
+                    <h3>Order Summary</h3>
+                    <div class="price-row">
+                        <span>Cake Price:</span>
+                        <span id="cakePrice">$0.00</span>
+                    </div>
+                    <div class="price-row" id="discountRow" style="display: none; color: #C44569;">
+                        <span>Preferred Customer Discount (10%):</span>
+                        <span id="discountAmount">-$0.00</span>
+                    </div>
+                    <div class="price-row total">
+                        <span>Total Amount:</span>
+                        <span id="totalAmount">$0.00</span>
+                    </div>
+                    <div class="price-row">
+                        <span>Required Deposit (50%):</span>
+                        <span id="depositAmount">$0.00</span>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Submit Order</button>
+            </form>
+        </div>
+    </div>
+
+    <div class="modal-overlay" id="addCustomerModal">
+        <div class="modal">
+            <div class="modal-header">
+                <h2>Add New Customer</h2>
+                <button class="modal-close" onclick="closeAddCustomerModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <form id="newCustomerForm">
+                    <div class="modal-section">
+                        <div class="modal-section-title">👤 Personal Information</div>
+                        <div class="modal-row">
+                            <div class="modal-group">
+                                <label>First Name <span class="required">*</span></label>
+                                <input type="text" id="modal_firstName" required>
+                            </div>
+                            <div class="modal-group">
+                                <label>Last Name <span class="required">*</span></label>
+                                <input type="text" id="modal_lastName" required>
+                            </div>
+                        </div>
+                        <div class="modal-row">
+                            <div class="modal-group">
+                                <label>Middle Initial</label>
+                                <input type="text" id="modal_middleInit" maxlength="1">
+                            </div>
+                            <div class="modal-group">
+                                <label>Company Name</label>
+                                <input type="text" id="modal_companyName">
+                            </div>
+                        </div>
+                        <div class="modal-row">
+                            <div class="modal-group">
+                                <label>Customer Type <span class="required">*</span></label>
+                                <select id="modal_custType" required>
+                                    <option value="">Select type...</option>
+                                    <option value="1">Retail (Individual)</option>
+                                    <option value="2">Corporate (Business)</option>
+                                </select>
+                            </div>
+                            <div class="modal-group">
+                                <label>Customer Status <span class="required">*</span></label>
+                                <select id="modal_custStatus" required>
+                                    <option value="">Select status...</option>
+                                    <option value="1" selected>Active</option>
+                                    <option value="2">Inactive</option>
+                                    <option value="3">Prospect</option>
+                                    <option value="4">Do Not Contact</option>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <div class="modal-section-title">Address Information</div>
+                        <div class="modal-row full">
+                            <div class="modal-group">
+                                <label>Address Line 1 <span class="required">*</span></label>
+                                <input type="text" id="modal_addrLine1" required>
+                            </div>
+                        </div>
+                        <div class="modal-row full">
+                            <div class="modal-group">
+                                <label>Address Line 2</label>
+                                <input type="text" id="modal_addrLine2">
+                            </div>
+                        </div>
+                        <div class="modal-row">
+                            <div class="modal-group">
+                                <label>State / Province</label>
+                                <input type="text" id="modal_state">
+                            </div>
+                            <div class="modal-group">
+                                <label>Zip Code <span class="required">*</span></label>
+                                <input type="text" id="modal_zipCode" required>
+                            </div>
+                        </div>
+                        <div class="modal-row full">
+                            <div class="modal-group">
+                                <label>Country <span class="required">*</span></label>
+                                <input type="text" id="modal_country" value="USA" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <div class="modal-section-title">Contact Information</div>
+                        <div class="modal-row">
+                            <div class="modal-group">
+                                <label>Mobile Phone <span class="required">*</span></label>
+                                <input type="tel" id="modal_mobilePhone" placeholder="(xxx) xxx-xxxx" required>
+                            </div>
+                            <div class="modal-group">
+                                <label>Work Phone</label>
+                                <input type="tel" id="modal_workPhone" placeholder="(xxx) xxx-xxxx">
+                            </div>
+                        </div>
+                        <div class="modal-row">
+                            <div class="modal-group">
+                                <label>Home Phone</label>
+                                <input type="tel" id="modal_homePhone" placeholder="(xxx) xxx-xxxx">
+                            </div>
+                            <div class="modal-group">
+                                <label>Email Address <span class="required">*</span></label>
+                                <input type="email" id="modal_email" required>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="modal-section">
+                        <div class="modal-section-title">Additional Information</div>
+                        <div class="modal-row full">
+                            <div class="modal-group">
+                                <label>Comments</label>
+                                <textarea id="modal_comments" placeholder="Any additional notes about this customer..."></textarea>
+                            </div>
+                        </div>
+                        <div class="modal-row full">
+                            <div class="preferred-checkbox">
+                                <input type="checkbox" id="modal_preferredCustomer">
+                                <label for="modal_preferredCustomer">⭐ Preferred Customer <small style="color:#666;">(gets 10% discount)</small></label>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn-modal btn-modal-secondary" onclick="closeAddCustomerModal()">Cancel</button>
+                <button type="button" class="btn-modal btn-modal-primary" onclick="saveNewCustomer()">Save Customer</button>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('orderForm');
+        const cakeSizeSelect = document.getElementById('cakeSize');
+        const numLayersSelect = document.getElementById('numLayers');
+        const layersContainer = document.getElementById('layersContainer');
+        const pickupDateInput = document.getElementById('pickupDate');
+
+        const today = new Date();
+        const minDate = new Date(today);
+        minDate.setDate(minDate.getDate() + 2);
+        pickupDateInput.min = minDate.toISOString().split('T')[0];
+
+        function generateLayers() {
+            const numLayers = parseInt(numLayersSelect.value) || 0;
+            layersContainer.innerHTML = '';
+
+            for (let i = 1; i <= numLayers; i++) {
+                const layerSection = document.createElement('div');
+                layerSection.className = 'section';
+                layerSection.innerHTML = `
+                    <h2 class="section-title">Layer ${i}</h2>
 
                     <div class="form-row two-col">
                         <div class="form-group">
                             <label>Cake Flavor <span class="required">*</span></label>
-                            <select name="flavor" required>
+                            <select name="layer_${i}_flavor" required>
                                 <option value="">Select flavor...</option>
                                 <option value="Vanilla">Vanilla</option>
                                 <option value="Almond">Almond</option>
-                                <option value="Yellow" selected>Yellow</option>
+                                <option value="Yellow" ${i === 1 ? 'selected' : ''}>Yellow</option>
                                 <option value="Devils Food Chocolate">Devil's Food Chocolate</option>
                                 <option value="Chocolate">Chocolate</option>
                                 <option value="Strawberry">Strawberry</option>
@@ -520,9 +1200,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Filling <span class="required">*</span></label>
-                            <select name="filling" required>
-                                <option value="">-- choose filling --</option>
+                            <label>Filling</label>
+                            <select name="layer_${i}_filling">
+                                <option value="">Select filling...</option>
                                 <option value="White Buttercream">White Buttercream</option>
                                 <option value="Chocolate Buttercream">Chocolate Buttercream</option>
                                 <option value="Almond Buttercream">Almond Buttercream</option>
@@ -544,9 +1224,9 @@
 
                     <div class="form-row two-col">
                         <div class="form-group">
-                            <label>Icing Flavor <span class="required">*</span></label>
-                            <select name="icing_flavor" required>
-                                <option value="">-- choose icing --</option>
+                            <label>Icing Flavor</label>
+                            <select name="layer_${i}_icing_flavor">
+                                <option value="">Select icing...</option>
                                 <option value="White Buttercream">White Buttercream</option>
                                 <option value="Chocolate Buttercream">Chocolate Buttercream</option>
                                 <option value="Almond Buttercream">Almond Buttercream</option>
@@ -557,10 +1237,9 @@
                         </div>
 
                         <div class="form-group">
-                            <label>Icing Color <span class="required">*</span></label>
-                            <select name="icing_color" required>
+                            <label>Icing Color</label>
+                            <select name="layer_${i}_icing_color">
                                 <option value="">Select color...</option>
-
                                 <optgroup label="Primary Colors">
                                     <option value="Red">Red</option>
                                     <option value="Royal Blue">Royal Blue</option>
@@ -568,7 +1247,6 @@
                                     <option value="Yellow">Yellow</option>
                                     <option value="Orange">Orange</option>
                                 </optgroup>
-
                                 <optgroup label="Pastel Colors">
                                     <option value="Baby Pink">Baby Pink</option>
                                     <option value="Baby Blue">Baby Blue</option>
@@ -576,7 +1254,6 @@
                                     <option value="Pastel Yellow">Pastel Yellow</option>
                                     <option value="Lavender">Lavender</option>
                                 </optgroup>
-
                                 <optgroup label="Neon Colors">
                                     <option value="Hot Pink">Hot Pink</option>
                                     <option value="Sky Blue">Sky Blue</option>
@@ -585,7 +1262,6 @@
                                     <option value="Neon Orange">Neon Orange</option>
                                     <option value="Purple">Purple</option>
                                 </optgroup>
-
                                 <optgroup label="Fall Colors">
                                     <option value="Fall Red">Fall Red</option>
                                     <option value="Fall Green">Fall Green</option>
@@ -593,7 +1269,6 @@
                                     <option value="Fall Orange">Fall Orange</option>
                                     <option value="Brown">Brown</option>
                                 </optgroup>
-
                                 <optgroup label="Special / Metallic">
                                     <option value="Ivory">Ivory</option>
                                     <option value="Golden Yellow">Golden Yellow</option>
@@ -611,236 +1286,187 @@
                             </select>
                         </div>
                     </div>
-                </div>
-
-                <!-- Customization -->
-                <div class="section">
-                    <h2 class="section-title">Customization</h2>
 
                     <div class="form-row">
                         <div class="form-group input-small">
                             <label>Writing on Cake</label>
-                            <input type="text" name="writing_text" placeholder="e.g., Happy Birthday Sarah!">
-                        </div>
-                    </div>
-
-                    <div class="form-row">
-                        <div class="form-group input-medium">
-                            <label>Decoration Details</label>
-                            <input type="text" name="decorations" placeholder="e.g., Fresh flowers, sprinkles, edible glitter">
+                            <input type="text" name="layer_${i}_writing_text" placeholder="e.g., Happy Birthday Sarah!">
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
-                            <label>Special Instructions</label>
-                            <textarea name="special_instructions" placeholder="Any dietary restrictions, allergies, or special requests..."></textarea>
+                            <label>Decoration Details</label>
+                            <select name="layer_${i}_decorations">
+                                <option value="">Select decoration...</option>
+                                <option value="Buttercream Flowers">Buttercream Flowers</option>
+                                <option value="Fondant Decorations">Fondant Decorations</option>
+                                <option value="Silk Flowers (Iris)">Silk Flowers (Iris)</option>
+                                <option value="Silk Flowers (Rose)">Silk Flowers (Rose)</option>
+                                <option value="Silk Flowers (Daisy)">Silk Flowers (Daisy)</option>
+                                <option value="Silk Flowers (Lily)">Silk Flowers (Lily)</option>
+                                <option value="Silk Butterflies">Silk Butterflies</option>
+                                <option value="Edible Sugar-Based Photos">Edible Sugar-Based "Photos"</option>
+                                <option value="Toy Trains">Toy Trains</option>
+                                <option value="Plastic Dinosaurs">Plastic Dinosaurs</option>
+                                <option value="Various Dolls">Various Dolls</option>
+                                <option value="Construction Toys">Construction Toys</option>
+                                <option value="Plastic Deer">Plastic Deer</option>
+                                <option value="Plastic Squirrels">Plastic Squirrels</option>
+                                <option value="Plastic Rabbits">Plastic Rabbits</option>
+                                <option value="Camping Tent">Camping Tent</option>
+                                <option value="Camping Fire">Camping Fire</option>
+                                <option value="Race Cars">Race Cars</option>
+                                <option value="Plastic Ballet Slippers">Plastic Ballet Slippers</option>
+                                <option value="Plastic Baby Rattles">Plastic Baby Rattles</option>
+                                <option value="Plastic Baby Bottle">Plastic Baby Bottle</option>
+                                <option value="Plastic Fish">Plastic Fish</option>
+                                <option value="Plastic Pine Trees">Plastic Pine Trees</option>
+                                <option value="Plastic Palm Trees">Plastic Palm Trees</option>
+                                <option value="Fleur-de-Lis Picks">Fleur-de-Lis Picks</option>
+                                <option value="Rock Candy">Rock Candy</option>
+                                <option value="Plastic Graduation Cap">Plastic Graduation Cap</option>
+                                <option value="Plastic Balloons">Plastic Balloons</option>
+                                <option value="Plastic Firework Explosions">Plastic Firework Explosions</option>
+                                <option value="Ribbon (Red)">Ribbon (Red)</option>
+                                <option value="Ribbon (Blue)">Ribbon (Blue)</option>
+                                <option value="Ribbon (Pink)">Ribbon (Pink)</option>
+                                <option value="Ribbon (Purple)">Ribbon (Purple)</option>
+                                <option value="Ribbon (Gold)">Ribbon (Gold)</option>
+                                <option value="Ribbon (Silver)">Ribbon (Silver)</option>
+                                <option value="Ribbon (Yellow)">Ribbon (Yellow)</option>
+                                <option value="Ribbon (White)">Ribbon (White)</option>
+                                <option value="Ribbon (Green)">Ribbon (Green)</option>
+                                <option value="Ribbon (Black)">Ribbon (Black)</option>
+                                <option value="Plastic Star Explosion Insert">Plastic Star Explosion Insert</option>
+                                <option value="Paper Parasols">Paper Parasols</option>
+                                <option value="Plastic Flamingos">Plastic Flamingos</option>
+                                <option value="Plastic Fish Picks">Plastic Fish Picks</option>
+                                <option value="Plastic Mermaids">Plastic Mermaids</option>
+                                <option value="Plastic Flip Flops">Plastic Flip Flops</option>
+                                <option value="Plastic Seashells">Plastic Seashells</option>
+                                <option value="US Flag">US Flag</option>
+                                <option value="Canada Flag">Canada Flag</option>
+                                <option value="Mexico Flag">Mexico Flag</option>
+                                <option value="Goal Posts">Goal Posts</option>
+                                <option value="Soccer Nets">Soccer Nets</option>
+                                <option value="Basketball Nets">Basketball Nets</option>
+                                <option value="Rainbows">Rainbows</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Layer Special Instructions</label>
+                            <textarea name="layer_${i}_special_instructions" placeholder="Any special requests for this layer..."></textarea>
                         </div>
                     </div>
 
                     <div class="form-row">
                         <div class="form-group">
                             <label>Reference Photos</label>
-                            <input type="file" name="reference_photos" accept="image/*" multiple>
+                            <input type="file" name="layer_${i}_reference_photos" accept="image/*" multiple>
                             <small style="color:#666; margin-top:6px;">Upload one or more images for reference (optional).</small>
                         </div>
                     </div>
-                </div>
+                `;
+                layersContainer.appendChild(layerSection);
+            }
 
-                <!-- Price Summary -->
-                <div class="price-display">
-                    <h3>Order Summary</h3>
-                    <div class="price-row">
-                        <span>Cake Price:</span>
-                        <span id="cakePrice">$0.00</span>
-                    </div>
-                    <div class="price-row total">
-                        <span>Total Amount:</span>
-                        <span id="totalAmount">$0.00</span>
-                    </div>
-                    <div class="price-row">
-                        <span>Required Deposit (50%):</span>
-                        <span id="depositAmount">$0.00</span>
-                    </div>
-                </div>
-
-                <button type="submit" class="submit-btn">Submit Order</button>
-            </form>
-        </div>
-    </div>
-
-    <script>
-        const form = document.getElementById('orderForm');
-        const cakeSizeSelect = document.getElementById('cakeSize');
-        const pickupDateInput = document.getElementById('pickupDate');
-
-        const today = new Date();
-        const minDate = new Date(today);
-        minDate.setDate(minDate.getDate() + 2);
-        pickupDateInput.min = minDate.toISOString().split('T')[0];
+            updatePricing();
+        }
 
         function updatePricing() {
             const selectedOption = cakeSizeSelect.options[cakeSizeSelect.selectedIndex];
-            const price = parseFloat(selectedOption.dataset.price) || 0;
+            const pricePerLayer = parseFloat(selectedOption.dataset.price) || 0;
+            const numLayers = parseInt(numLayersSelect.value) || 0;
+            const basePrice = pricePerLayer * numLayers;
+            
+            const preferredCustomer = document.getElementById('preferredCustomer');
+            const isPreferred = preferredCustomer ? preferredCustomer.checked : false;
+            const discount = isPreferred ? basePrice * 0.10 : 0;
+            const totalPrice = basePrice - discount;
             
             const cakePriceEl = document.getElementById('cakePrice');
+            const discountRowEl = document.getElementById('discountRow');
+            const discountAmountEl = document.getElementById('discountAmount');
             const totalAmountEl = document.getElementById('totalAmount');
             const depositAmountEl = document.getElementById('depositAmount');
             
-            const deposit = price * 0.5;
+            const deposit = totalPrice * 0.5;
             
-            cakePriceEl.textContent = '$' + price.toFixed(2);
-            totalAmountEl.textContent = '$' + price.toFixed(2);
+            cakePriceEl.textContent = '$' + basePrice.toFixed(2);
+            
+            if (isPreferred && discount > 0) {
+                discountRowEl.style.display = 'flex';
+                discountAmountEl.textContent = '-$' + discount.toFixed(2);
+            } else {
+                discountRowEl.style.display = 'none';
+            }
+            
+            totalAmountEl.textContent = '$' + totalPrice.toFixed(2);
             depositAmountEl.textContent = '$' + deposit.toFixed(2);
         }
 
+        generateLayers();
+
+        numLayersSelect.addEventListener('change', generateLayers);
         cakeSizeSelect.addEventListener('change', updatePricing);
+
+        const preferredCustomerCheckbox = document.getElementById('preferredCustomer');
+        if (preferredCustomerCheckbox) {
+            preferredCustomerCheckbox.addEventListener('change', updatePricing);
+        }
+
+        const employeeSelect = document.getElementById('employeeSelect');
+        const employeeIdInput = document.getElementById('employeeId');
+
+        employeeSelect.addEventListener('change', function() {
+            const selectedOption = employeeSelect.options[employeeSelect.selectedIndex];
+            const employeeId = selectedOption.dataset.id || '';
+            employeeIdInput.value = employeeId;
+        });
 
         form.addEventListener('submit', function(e) {
             e.preventDefault();
             
             const formData = new FormData(form);
+            const orderData = {};
+            formData.forEach((value, key) => {
+                orderData[key] = value;
+            });
             
-            // Extract form data
-            const customerName = formData.get('customer_name');
-            const customerPhone = formData.get('customer_phone');
-            const customerEmail = formData.get('customer_email') || '';
-            const customerAddress = formData.get('customer_address');
-            const pickupDate = formData.get('pickup_date');
-            const pickupTime = formData.get('pickup_time');
-            const cakeSize = formData.get('size');
-            const occasion = formData.get('occasion') || '';
-            const specialInstructions = formData.get('special_instructions') || '';
+            orderData.total_amount = document.getElementById('totalAmount').textContent;
+            orderData.deposit_amount = document.getElementById('depositAmount').textContent;
             
-            // Get pricing
-            const totalPrice = parseFloat(document.getElementById('totalAmount').textContent.replace('$', ''));
-            const depositAmount = parseFloat(document.getElementById('depositAmount').textContent.replace('$', ''));
-            
-            // Build layer details string
-            const numLayers = parseInt(formData.get('layers')) || 1;
-            let layerDetails = [];
-            for (let i = 1; i <= numLayers; i++) {
-                const flavor = formData.get(`flavor_layer${i}`) || '';
-                const filling = formData.get(`filling_layer${i}`) || '';
-                const icingFlavor = formData.get(`icing_flavor_layer${i}`) || '';
-                const icingColor = formData.get(`icing_color_layer${i}`) || '';
-                const writingText = formData.get(`writing_text_layer${i}`) || '';
-                const decorations = formData.get(`cake_decorations_layer${i}`) || '';
-                
-                layerDetails.push(`Layer ${i}: ${flavor} cake, ${filling} filling, ${icingFlavor} icing (${icingColor})${writingText ? ', Text: "' + writingText + '"' : ''}${decorations ? ', Decorations: ' + decorations : ''}`);
-            }
-            
-            const notes = `${occasion ? 'Occasion: ' + occasion + '. ' : ''}${layerDetails.join(' | ')}${specialInstructions ? '. Special: ' + specialInstructions : ''}`;
-            const decorationNotes = layerDetails.join(' | ');
-            
-            // Check if customer exists by phone number
-            let customer = unifiedMockData.customers.find(c => 
-                c.mobilePhone === customerPhone || 
-                c.email === customerEmail
-            );
-            
-            // If customer doesn't exist, create new customer
-            if (!customer) {
-                const newCustomerId = Math.max(...unifiedMockData.customers.map(c => c.id)) + 1;
-                const nameParts = customerName.trim().split(' ');
-                const firstName = nameParts[0];
-                const lastName = nameParts.slice(1).join(' ') || firstName;
-                
-                customer = {
-                    id: newCustomerId,
-                    statusId: 1,
-                    typeId: 1,
-                    companyName: null,
-                    firstName: firstName,
-                    middleInitial: null,
-                    lastName: lastName,
-                    addressLine1: customerAddress,
-                    addressLine2: null,
-                    stateId: 48,
-                    countryId: 1,
-                    zipCode: customerAddress.match(/\d{5}$/)?.[0] || '00000',
-                    mobilePhone: customerPhone,
-                    workPhone: null,
-                    homePhone: null,
-                    email: customerEmail,
-                    comments: `New customer from order form - ${new Date().toLocaleDateString()}`,
-                    isPreferred: 'N'
-                };
-                
-                unifiedMockData.customers.push(customer);
-                console.log('Created new customer:', customer);
-            }
-            
-            // Create new order
-            const newOrderId = Math.max(...unifiedMockData.orders.map(o => o.id)) + 1;
-            const today = new Date().toISOString().split('T')[0];
-            
-            // Find appropriate product based on size (or use a default)
-            const productId = 1; // Default to Lemon Doberge, can be enhanced
-            
-            const newOrder = {
-                id: newOrderId,
-                customerId: customer.id,
-                productId: productId,
-                orderDate: today,
-                pickupDate: pickupDate,
-                pickupTime: pickupTime + ':00',
-                totalPrice: totalPrice,
-                depositAmount: depositAmount,
-                paymentMethod: 'Pending', // Can be updated later
-                salesStaffId: 101, // Default sales staff
-                lastEmployeeId: 101,
-                statusId: 1, // To Be Created
-                isCancelled: 'N',
-                finalApprovalId: null,
-                notes: notes,
-                cakeSize: cakeSize + '"',
-                decorationNotes: decorationNotes
-            };
-            
-            unifiedMockData.orders.push(newOrder);
-            
-            console.log('Order created successfully:', newOrder);
-            
-            // Show success message with order details
-            alert(`✅ Order Submitted Successfully!\n\nOrder #${newOrderId}\nCustomer: ${customerName}\nPickup: ${pickupDate} at ${pickupTime}\nTotal: $${totalPrice.toFixed(2)}\nDeposit Paid: $${depositAmount.toFixed(2)}\n\n${customer.id === newCustomerId ? 'New customer account created!' : 'Existing customer account used.'}\n\nYour order has been added to the system.`);
-            
-            // Option 1: Redirect to dashboard orders page
-            setTimeout(() => {
-                window.location.href = 'dashboard/all-orders.html';
-            }, 1000);
-            
-            // Option 2: Just reset form (comment out redirect above if using this)
-            // form.reset();
-            // updateLayers();
-            // updatePricing();
+            console.log('Order submitted:', orderData);
+            localStorage.setItem('lastOrder', JSON.stringify(orderData));
+            window.location.href = 'order-success.html';
         });
 
-        // Auto-format phone input as xxx-xxx-xxxx while typing
         const phoneInput = document.querySelector('input[name="customer_phone"]');
         if (phoneInput) {
             phoneInput.addEventListener('input', function(e) {
                 const value = phoneInput.value.replace(/[^0-9]/g, '').slice(0,10);
                 let formatted = value;
                 if (value.length > 6) {
-                    formatted = value.slice(0,3) + '-' + value.slice(3,6) + '-' + value.slice(6);
+                    formatted = '(' + value.slice(0,3) + ') ' + value.slice(3,6) + '-' + value.slice(6);
                 } else if (value.length > 3) {
-                    formatted = value.slice(0,3) + '-' + value.slice(3);
+                    formatted = '(' + value.slice(0,3) + ') ' + value.slice(3);
+                } else if (value.length > 0) {
+                    formatted = '(' + value;
                 }
                 phoneInput.value = formatted;
             });
 
-            // When leaving the field, ensure it matches the pattern if not empty
             phoneInput.addEventListener('blur', function() {
-                const pattern = /^(\d{3}-\d{3}-\d{4})$/;
+                const pattern = /^(\(\d{3}\) \d{3}-\d{4})$/;
                 if (phoneInput.value && !pattern.test(phoneInput.value)) {
-                    // keep focus so user can correct; simple UX choice
-                    // alternatively, you could auto-pad or show validation message
                 }
             });
         }
 
-        // Show Yellow (default) in gray styling inside the select box
         const flavorSelect = document.querySelector('select[name="flavor"]');
         function updateFlavorPlaceholderClass() {
             if (!flavorSelect) return;
@@ -851,10 +1477,303 @@
             }
         }
         if (flavorSelect) {
-            // set initial state
             updateFlavorPlaceholderClass();
             flavorSelect.addEventListener('change', updateFlavorPlaceholderClass);
         }
+
+        const sampleCustomers = [
+            { custId: 'C001', firstName: 'Jessica', lastName: 'Lopez', companyName: '', mobilePhone: '(281) 988-9649', email: 'jessica.lopez@gmail.com', custType: '1', addrLine1: '123 Main St', state: 'TX', zipCode: '77001', preferredCustomer: 'N' },
+            { custId: 'C002', firstName: 'Sandra', lastName: 'Davis', companyName: '', mobilePhone: '(512) 242-5336', email: 'sandra.davis@outlook.com', custType: '1', addrLine1: '456 Oak Ave', state: 'TX', zipCode: '78701', preferredCustomer: 'Y' },
+            { custId: 'C003', firstName: 'Mary', lastName: 'Taylor', companyName: '', mobilePhone: '(469) 546-7851', email: 'mary.taylor@hotmail.com', custType: '1', addrLine1: '789 Pine Rd', state: 'TX', zipCode: '75001', preferredCustomer: 'N' },
+            { custId: 'C004', firstName: 'Nancy', lastName: 'Ramirez', companyName: '', mobilePhone: '(512) 628-4554', email: 'nancy.ramirez@hotmail.com', custType: '1', addrLine1: '321 Elm St', state: 'TX', zipCode: '78702', preferredCustomer: 'N' },
+            { custId: 'C005', firstName: 'Linda', lastName: 'Wilson', companyName: '', mobilePhone: '(713) 766-7349', email: 'linda.wilson@hotmail.com', custType: '1', addrLine1: '654 Cedar Ln', state: 'TX', zipCode: '77002', preferredCustomer: 'Y' },
+            { custId: 'C006', firstName: 'Michael', lastName: 'Sanchez', companyName: '', mobilePhone: '(737) 766-9450', email: 'michael.sanchez@hotmail.com', custType: '1', addrLine1: '987 Birch Dr', state: 'TX', zipCode: '78703', preferredCustomer: 'N' },
+            { custId: 'C007', firstName: 'Daniel', lastName: 'Martinez', companyName: '', mobilePhone: '(713) 745-7151', email: 'daniel.martinez@gmail.com', custType: '1', addrLine1: '147 Maple St', state: 'TX', zipCode: '77003', preferredCustomer: 'N' },
+            { custId: 'C008', firstName: 'Joseph', lastName: 'Brown', companyName: '', mobilePhone: '(210) 626-8104', email: 'joseph.brown@yahoo.com', custType: '1', addrLine1: '258 Walnut Ave', state: 'TX', zipCode: '78210', preferredCustomer: 'N' },
+            { custId: 'C009', firstName: 'Amanda', lastName: 'Chen', companyName: '', mobilePhone: '(713) 234-5678', email: 'amanda.chen@gmail.com', custType: '1', addrLine1: '369 Spruce Ct', state: 'TX', zipCode: '77004', preferredCustomer: 'Y' },
+            { custId: 'C010', firstName: 'Marcus', lastName: 'Taylor', companyName: '', mobilePhone: '(214) 567-8901', email: 'marcus.taylor@outlook.com', custType: '1', addrLine1: '741 Oak Blvd', state: 'TX', zipCode: '75002', preferredCustomer: 'N' },
+            { custId: 'C026', firstName: 'Donald', lastName: 'Johnson', companyName: 'TechCorp Solutions', mobilePhone: '(210) 836-1166', email: 'donald.johnson@techcorpso.com', custType: '2', addrLine1: '100 Tech Blvd', state: 'TX', zipCode: '78213', preferredCustomer: 'Y' },
+            { custId: 'C027', firstName: 'William', lastName: 'Ramirez', companyName: 'Global Industries LLC', mobilePhone: '(469) 245-9792', email: 'william.ramirez@globalindu.com', custType: '2', addrLine1: '200 Industry Pkwy', state: 'TX', zipCode: '75006', preferredCustomer: 'N' },
+            { custId: 'C028', firstName: 'William', lastName: 'Thompson', companyName: 'Pinnacle Enterprises', mobilePhone: '(832) 676-5442', email: 'william.thompson@pinnacleen.com', custType: '2', addrLine1: '300 Summit Dr', state: 'TX', zipCode: '77009', preferredCustomer: 'Y' },
+            { custId: 'C029', firstName: 'Lisa', lastName: 'Walker', companyName: 'Visionary Systems Inc', mobilePhone: '(832) 952-6241', email: 'lisa.walker@visionarys.com', custType: '2', addrLine1: '400 Vision Way', state: 'TX', zipCode: '77010', preferredCustomer: 'N' },
+            { custId: 'C030', firstName: 'Patricia', lastName: 'Rodriguez', companyName: 'Horizon Business Group', mobilePhone: '(210) 591-1526', email: 'patricia.rodriguez@horizonbus.com', custType: '2', addrLine1: '500 Horizon Rd', state: 'TX', zipCode: '78214', preferredCustomer: 'N' }
+        ];
+
+        function initializeCustomers() {
+            let existingCustomers = JSON.parse(localStorage.getItem('customers') || '[]');
+            if (existingCustomers.length === 0) {
+                localStorage.setItem('customers', JSON.stringify(sampleCustomers));
+            }
+        }
+
+        initializeCustomers();
+
+        function getCustomers() {
+            return JSON.parse(localStorage.getItem('customers') || '[]');
+        }
+
+        function searchCustomers() {
+            const searchInput = document.getElementById('customerSearch');
+            const searchTerm = searchInput.value.trim().toLowerCase();
+            const resultsContainer = document.getElementById('searchResults');
+
+            if (searchTerm.length < 2) {
+                resultsContainer.classList.remove('active');
+                return;
+            }
+
+            const customers = getCustomers();
+            const matches = customers.filter(customer => {
+                const fullName = `${customer.firstName} ${customer.lastName}`.toLowerCase();
+                const phone = (customer.mobilePhone || '').replace(/[^0-9]/g, '');
+                const searchDigits = searchTerm.replace(/[^0-9]/g, '');
+                
+                return fullName.includes(searchTerm) || 
+                       customer.firstName.toLowerCase().includes(searchTerm) ||
+                       customer.lastName.toLowerCase().includes(searchTerm) ||
+                       (customer.companyName && customer.companyName.toLowerCase().includes(searchTerm)) ||
+                       (searchDigits.length >= 3 && phone.includes(searchDigits));
+            });
+
+            displaySearchResults(matches);
+        }
+
+        function displaySearchResults(matches) {
+            const resultsContainer = document.getElementById('searchResults');
+            
+            if (matches.length === 0) {
+                resultsContainer.innerHTML = '<div class="no-results">No customers found. Click "Add New Customer" to create one.</div>';
+                resultsContainer.classList.add('active');
+                return;
+            }
+
+            let html = '';
+            matches.slice(0, 10).forEach(customer => {
+                const displayName = customer.companyName 
+                    ? customer.companyName 
+                    : `${customer.firstName} ${customer.lastName}`;
+                const typeClass = customer.custType === '2' ? 'corporate' : 'retail';
+                const typeLabel = customer.custType === '2' ? 'Corporate' : 'Retail';
+                
+                html += `
+                    <div class="search-result-item" onclick="selectCustomer('${customer.custId}')">
+                        <div class="customer-name">
+                            ${displayName}
+                            <span class="customer-type-badge ${typeClass}">${typeLabel}</span>
+                        </div>
+                        <div class="customer-details">
+                            ${customer.mobilePhone} | ${customer.email || 'No email'}
+                        </div>
+                    </div>
+                `;
+            });
+
+            resultsContainer.innerHTML = html;
+            resultsContainer.classList.add('active');
+        }
+
+        function selectCustomer(custId) {
+            const customers = getCustomers();
+            const customer = customers.find(c => c.custId === custId);
+            
+            if (!customer) return;
+
+            const nameField = document.querySelector('input[name="customer_name"]');
+            const phoneField = document.querySelector('input[name="customer_phone"]');
+            const emailField = document.querySelector('input[name="customer_email"]');
+            const addressField = document.querySelector('input[name="customer_address"]');
+            const preferredCheckbox = document.getElementById('preferredCustomer');
+
+            const displayName = customer.companyName 
+                ? customer.companyName 
+                : `${customer.firstName} ${customer.lastName}`;
+            
+            nameField.value = displayName;
+            
+            const phoneDigits = (customer.mobilePhone || '').replace(/[^0-9]/g, '');
+            if (phoneDigits.length === 10) {
+                phoneField.value = `(${phoneDigits.slice(0,3)}) ${phoneDigits.slice(3,6)}-${phoneDigits.slice(6)}`;
+            } else {
+                phoneField.value = customer.mobilePhone || '';
+            }
+            
+            emailField.value = customer.email || '';
+            addressField.value = [customer.addrLine1, customer.state, customer.zipCode].filter(Boolean).join(', ');
+            
+            if (preferredCheckbox) {
+                preferredCheckbox.checked = customer.preferredCustomer === 'Y';
+                updatePricing();
+            }
+
+            document.getElementById('selectedCustomerName').textContent = displayName;
+            document.getElementById('selectedCustomer').classList.add('active');
+            
+            document.getElementById('customerPlaceholder').style.display = 'none';
+            document.getElementById('customerDetailsContent').style.display = 'block';
+            
+            document.getElementById('searchResults').classList.remove('active');
+            document.getElementById('customerSearch').value = '';
+        }
+
+        function clearSelectedCustomer() {
+            document.querySelector('input[name="customer_name"]').value = '';
+            document.querySelector('input[name="customer_phone"]').value = '';
+            document.querySelector('input[name="customer_email"]').value = '';
+            document.querySelector('input[name="customer_address"]').value = '';
+            document.getElementById('preferredCustomer').checked = false;
+            document.getElementById('selectedCustomer').classList.remove('active');
+            
+            document.getElementById('customerPlaceholder').style.display = 'flex';
+            document.getElementById('customerDetailsContent').style.display = 'none';
+            
+            updatePricing();
+        }
+
+        function openAddCustomerModal() {
+            const searchTerm = document.getElementById('customerSearch').value.trim();
+            
+            document.getElementById('newCustomerForm').reset();
+            document.getElementById('modal_country').value = 'USA';
+            document.getElementById('modal_custStatus').value = '1';
+            
+            if (searchTerm) {
+                const isPhone = /^[\d\s\-\(\)]+$/.test(searchTerm) && searchTerm.replace(/[^0-9]/g, '').length >= 3;
+                
+                if (isPhone) {
+                    const digits = searchTerm.replace(/[^0-9]/g, '').slice(0, 10);
+                    let formatted = digits;
+                    if (digits.length === 10) {
+                        formatted = `(${digits.slice(0,3)}) ${digits.slice(3,6)}-${digits.slice(6)}`;
+                    }
+                    document.getElementById('modal_mobilePhone').value = formatted;
+                } else {
+                    const nameParts = searchTerm.split(' ');
+                    document.getElementById('modal_firstName').value = nameParts[0] || '';
+                    if (nameParts.length > 1) {
+                        document.getElementById('modal_lastName').value = nameParts.slice(1).join(' ');
+                    }
+                }
+            }
+
+            document.getElementById('searchResults').classList.remove('active');
+            
+            document.getElementById('addCustomerModal').classList.add('active');
+            document.body.style.overflow = 'hidden';
+        }
+
+        function closeAddCustomerModal() {
+            document.getElementById('addCustomerModal').classList.remove('active');
+            document.body.style.overflow = '';
+        }
+
+        function saveNewCustomer() {
+            const firstName = document.getElementById('modal_firstName').value.trim();
+            const lastName = document.getElementById('modal_lastName').value.trim();
+            const mobilePhone = document.getElementById('modal_mobilePhone').value.trim();
+            const custType = document.getElementById('modal_custType').value;
+            const addrLine1 = document.getElementById('modal_addrLine1').value.trim();
+            const zipCode = document.getElementById('modal_zipCode').value.trim();
+            const country = document.getElementById('modal_country').value.trim();
+            const email = document.getElementById('modal_email').value.trim();
+
+            const errors = [];
+            
+            if (!firstName) errors.push('First Name is required');
+            if (!lastName) errors.push('Last Name is required');
+            if (!mobilePhone) {
+                errors.push('Mobile Phone is required');
+            } else {
+                const phoneDigits = mobilePhone.replace(/[^0-9]/g, '');
+                if (phoneDigits.length !== 10) {
+                    errors.push('Mobile Phone must be 10 digits (format: (123) 456-7890)');
+                }
+            }
+            if (!custType) errors.push('Customer Type is required');
+            if (!addrLine1) errors.push('Address Line 1 is required');
+            if (!zipCode) {
+                errors.push('Zip Code is required');
+            } else if (!/^\d{5}(-\d{4})?$/.test(zipCode)) {
+                errors.push('Zip Code must be valid (5 digits or 5+4 format)');
+            }
+            if (!country) errors.push('Country is required');
+            if (!email) {
+                errors.push('Email is required');
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errors.push('Email format is invalid');
+            }
+            
+            if (errors.length > 0) {
+                alert('Please correct the following errors:\n\n' + errors.join('\n'));
+                return;
+            }
+
+            const customers = getCustomers();
+            const maxId = customers.reduce((max, c) => {
+                const num = parseInt(c.custId.replace('C', '')) || 0;
+                return num > max ? num : max;
+            }, 0);
+            const newId = 'C' + String(maxId + 1).padStart(3, '0');
+
+            const newCustomer = {
+                custId: newId,
+                firstName: firstName,
+                lastName: lastName,
+                middleInit: document.getElementById('modal_middleInit').value.trim(),
+                companyName: document.getElementById('modal_companyName').value.trim(),
+                custType: custType,
+                custStatus: document.getElementById('modal_custStatus').value,
+                addrLine1: document.getElementById('modal_addrLine1').value.trim(),
+                addrLine2: document.getElementById('modal_addrLine2').value.trim(),
+                state: document.getElementById('modal_state').value.trim(),
+                zipCode: document.getElementById('modal_zipCode').value.trim(),
+                country: document.getElementById('modal_country').value.trim(),
+                mobilePhone: mobilePhone,
+                workPhone: document.getElementById('modal_workPhone').value.trim(),
+                homePhone: document.getElementById('modal_homePhone').value.trim(),
+                email: document.getElementById('modal_email').value.trim(),
+                comments: document.getElementById('modal_comments').value.trim(),
+                preferredCustomer: document.getElementById('modal_preferredCustomer').checked ? 'Y' : 'N'
+            };
+
+            customers.push(newCustomer);
+            localStorage.setItem('customers', JSON.stringify(customers));
+
+            closeAddCustomerModal();
+
+            selectCustomer(newId);
+        }
+
+        document.getElementById('customerSearch').addEventListener('keyup', function(e) {
+            if (e.key === 'Enter') {
+                searchCustomers();
+            }
+        });
+
+        document.addEventListener('click', function(e) {
+            const searchWrapper = document.querySelector('.search-input-wrapper');
+            if (searchWrapper && !searchWrapper.contains(e.target)) {
+                document.getElementById('searchResults').classList.remove('active');
+            }
+        });
+
+        document.getElementById('addCustomerModal').addEventListener('click', function(e) {
+            if (e.target === this) {
+                closeAddCustomerModal();
+            }
+        });
+
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') {
+                closeAddCustomerModal();
+            }
+        });
+
+        window.searchCustomers = searchCustomers;
+        window.openAddCustomerModal = openAddCustomerModal;
+        window.closeAddCustomerModal = closeAddCustomerModal;
+        window.saveNewCustomer = saveNewCustomer;
+        window.selectCustomer = selectCustomer;
+        window.clearSelectedCustomer = clearSelectedCustomer;
     </script>
 </body>
 </html>

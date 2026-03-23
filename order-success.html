@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Order Confirmation - Emily Bakes Cakes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #F8EBD7 0%, #E9E9E9 100%);
+            min-height: 100vh;
+            padding: 40px 20px;
+            color: #2B2B2B;
+        }
+
+        .container {
+            max-width: 700px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .header {
+            background: #4CAF50;
+            color: white;
+            padding: 40px 30px;
+            text-align: center;
+        }
+
+        .header .checkmark {
+            font-size: 64px;
+            margin-bottom: 15px;
+        }
+
+        .header h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 32px;
+            margin-bottom: 8px;
+        }
+
+        .header p {
+            font-size: 16px;
+            opacity: 0.95;
+        }
+
+        .content {
+            padding: 40px 30px;
+        }
+
+        .order-summary {
+            background: #F8EBD7;
+            border-radius: 10px;
+            padding: 25px;
+            margin-bottom: 30px;
+        }
+
+        .order-summary h2 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 20px;
+            color: #C44569;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #E0C9A6;
+        }
+
+        .summary-row {
+            display: flex;
+            justify-content: space-between;
+            padding: 10px 0;
+            border-bottom: 1px solid #E0C9A6;
+        }
+
+        .summary-row:last-child {
+            border-bottom: none;
+        }
+
+        .summary-row.total {
+            font-weight: 700;
+            font-size: 18px;
+            color: #C44569;
+            padding-top: 15px;
+            margin-top: 10px;
+            border-top: 2px solid #C44569;
+            border-bottom: none;
+        }
+
+        .summary-label {
+            font-weight: 600;
+            color: #555;
+        }
+
+        .summary-value {
+            color: #333;
+        }
+
+        .info-box {
+            background: #E3F2FD;
+            border-left: 4px solid #1565C0;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+        .info-box h3 {
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            color: #1565C0;
+            margin-bottom: 10px;
+        }
+
+        .info-box p {
+            font-size: 14px;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .actions {
+            display: flex;
+            gap: 15px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            flex: 1;
+            min-width: 200px;
+            padding: 16px 24px;
+            border: none;
+            border-radius: 8px;
+            font-family: 'Poppins', sans-serif;
+            font-size: 16px;
+            font-weight: 600;
+            cursor: pointer;
+            text-decoration: none;
+            text-align: center;
+            transition: all 0.3s;
+        }
+
+        .btn-primary {
+            background: #C44569;
+            color: white;
+        }
+
+        .btn-primary:hover {
+            background: #A33854;
+        }
+
+        .btn-secondary {
+            background: white;
+            color: #C44569;
+            border: 2px solid #C44569;
+        }
+
+        .btn-secondary:hover {
+            background: #FFF7F9;
+        }
+
+        @media (max-width: 600px) {
+            .actions {
+                flex-direction: column;
+            }
+
+            .btn {
+                min-width: auto;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <div class="checkmark">✓</div>
+            <h1>Order Submitted!</h1>
+            <p>Your cake order has been received</p>
+        </div>
+
+        <div class="content">
+            <div class="order-summary" id="orderSummary">
+                <h2>Order Details</h2>
+                <div id="summaryContent">
+                    <p style="color: #666;">Loading order details...</p>
+                </div>
+            </div>
+
+            <div class="info-box">
+                <h3>What's Next?</h3>
+                <p>
+                    <strong>1.</strong> Our team will review your order and contact you within 24 hours to confirm details.<br><br>
+                    <strong>2.</strong> A 50% deposit is required to confirm your order. We accept cash, check, or credit card.<br><br>
+                    <strong>3.</strong> Your cake will be ready for pickup on the scheduled date and time.
+                </p>
+            </div>
+
+            <div class="actions">
+                <a href="order-form.html" class="btn btn-primary">Place Another Order</a>
+                <a href="index.html" class="btn btn-secondary">Return to Home</a>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function loadOrderSummary() {
+            const summaryContent = document.getElementById('summaryContent');
+            const orderDataStr = localStorage.getItem('lastOrder');
+
+            if (!orderDataStr) {
+                summaryContent.innerHTML = '<p style="color: #C44569;">No order data found. Please submit an order first.</p>';
+                return;
+            }
+
+            try {
+                const order = JSON.parse(orderDataStr);
+                
+                let html = '';
+
+                if (order.customer_name) {
+                    html += `
+                        <div class="summary-row">
+                            <span class="summary-label">Customer</span>
+                            <span class="summary-value">${order.customer_name}</span>
+                        </div>
+                    `;
+                }
+
+                if (order.customer_phone) {
+                    html += `
+                        <div class="summary-row">
+                            <span class="summary-label">Phone</span>
+                            <span class="summary-value">${order.customer_phone}</span>
+                        </div>
+                    `;
+                }
+
+                if (order.pickup_date) {
+                    const pickupDate = new Date(order.pickup_date + 'T00:00:00');
+                    const formattedDate = pickupDate.toLocaleDateString('en-US', {
+                        weekday: 'long',
+                        year: 'numeric',
+                        month: 'long',
+                        day: 'numeric'
+                    });
+                    const pickupTime = order.pickup_time || '10:00';
+                    
+                    html += `
+                        <div class="summary-row">
+                            <span class="summary-label">Pickup Date</span>
+                            <span class="summary-value">${formattedDate}</span>
+                        </div>
+                        <div class="summary-row">
+                            <span class="summary-label">Pickup Time</span>
+                            <span class="summary-value">${formatTime(pickupTime)}</span>
+                        </div>
+                    `;
+                }
+
+                if (order.size) {
+                    let sizeDisplay = order.size;
+                    const sizeLabels = {
+                        '6': '6-inch Round',
+                        '8': '8-inch Round',
+                        '10': '10-inch Round',
+                        '12': '12-inch Round',
+                        '14': '14-inch Round',
+                        '16': '16-inch Round',
+                        'quarter': '¼ Sheet',
+                        'half': '½ Sheet',
+                        'full': 'Full Sheet'
+                    };
+                    sizeDisplay = sizeLabels[order.size] || order.size;
+                    
+                    html += `
+                        <div class="summary-row">
+                            <span class="summary-label">Cake Size</span>
+                            <span class="summary-value">${sizeDisplay}</span>
+                        </div>
+                    `;
+                }
+
+                if (order.num_layers) {
+                    html += `
+                        <div class="summary-row">
+                            <span class="summary-label">Layers</span>
+                            <span class="summary-value">${order.num_layers} layers</span>
+                        </div>
+                    `;
+                }
+
+                if (order.occasion) {
+                    html += `
+                        <div class="summary-row">
+                            <span class="summary-label">Occasion</span>
+                            <span class="summary-value">${order.occasion}</span>
+                        </div>
+                    `;
+                }
+
+                if (order.special_instructions) {
+                    html += `
+                        <div class="summary-row">
+                            <span class="summary-label">Special Instructions</span>
+                            <span class="summary-value">${order.special_instructions}</span>
+                        </div>
+                    `;
+                }
+
+                if (order.total_amount) {
+                    html += `
+                        <div class="summary-row total">
+                            <span class="summary-label">Total Amount</span>
+                            <span class="summary-value">${order.total_amount}</span>
+                        </div>
+                    `;
+                }
+
+                if (order.deposit_amount) {
+                    html += `
+                        <div class="summary-row">
+                            <span class="summary-label">Deposit Due</span>
+                            <span class="summary-value">${order.deposit_amount}</span>
+                        </div>
+                    `;
+                }
+
+                summaryContent.innerHTML = html || '<p style="color: #666;">Order submitted successfully.</p>';
+
+            } catch (e) {
+                console.error('Error parsing order data:', e);
+                summaryContent.innerHTML = '<p style="color: #C44569;">Error loading order details.</p>';
+            }
+        }
+
+        function formatTime(time) {
+            if (!time) return '';
+            const [hours, minutes] = time.split(':');
+            const hour = parseInt(hours);
+            const ampm = hour >= 12 ? 'PM' : 'AM';
+            const hour12 = hour % 12 || 12;
+            return `${hour12}:${minutes} ${ampm}`;
+        }
+
+        loadOrderSummary();
+    </script>
+</body>
+</html>

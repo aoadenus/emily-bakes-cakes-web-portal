@@ -1,0 +1,489 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>New Customer - Emily Bakes Cakes</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Poppins:wght@400;600&family=Open+Sans:wght@400;600&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Open Sans', sans-serif;
+            background: linear-gradient(135deg, #F8EBD7 0%, #E9E9E9 100%);
+            min-height: 100vh;
+            padding: 20px;
+            color: #2B2B2B;
+        }
+
+        .container {
+            position: relative;
+            max-width: 900px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+
+        .back-btn {
+            position: absolute;
+            left: 16px;
+            top: 16px;
+            background: white;
+            color: #C44569;
+            border: 2px solid #E9E9E9;
+            padding: 8px 12px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-family: 'Poppins', sans-serif;
+            font-weight: 600;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.06);
+            transition: background 0.15s, transform 0.08s;
+            z-index: 10;
+        }
+
+        .back-btn:hover {
+            background: #FFF7F9;
+            transform: translateY(-1px);
+        }
+
+        .header {
+            background: #C44569;
+            color: white;
+            padding: 40px 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 18px;
+        }
+
+        .header .logo {
+            width: 72px;
+            height: 72px;
+            object-fit: contain;
+            border-radius: 8px;
+            background: white;
+            padding: 6px;
+        }
+
+        .header .header-text h1 {
+            font-family: 'Playfair Display', serif;
+            font-size: 36px;
+            margin-bottom: 6px;
+        }
+
+        .header .header-text p {
+            font-size: 16px;
+            opacity: 0.95;
+            margin: 0;
+        }
+
+        .form-content {
+            padding: 40px 30px;
+        }
+
+        .section {
+            margin-bottom: 40px;
+        }
+
+        .section-title {
+            font-family: 'Poppins', sans-serif;
+            font-size: 22px;
+            font-weight: 600;
+            color: #C44569;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #F8EBD7;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .section-icon {
+            font-size: 24px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+            margin-bottom: 20px;
+        }
+
+        .form-row.two-col {
+            grid-template-columns: 1fr 1fr;
+        }
+
+        .form-row.three-col {
+            grid-template-columns: 1fr 1fr 1fr;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            font-family: 'Poppins', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            color: #2B2B2B;
+            margin-bottom: 8px;
+        }
+
+        label .required {
+            color: #C44569;
+        }
+
+        input,
+        select,
+        textarea {
+            font-family: 'Open Sans', sans-serif;
+            font-size: 15px;
+            padding: 12px 15px;
+            border: 2px solid #E9E9E9;
+            border-radius: 6px;
+            transition: border-color 0.3s;
+        }
+
+        input:focus,
+        select:focus,
+        textarea:focus {
+            outline: none;
+            border-color: #C44569;
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 100px;
+        }
+
+        .preferred-checkbox {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 15px;
+            background: linear-gradient(135deg, #FFF8E1 0%, #FFFFFF 100%);
+            border: 2px solid #FFD54F;
+            border-radius: 8px;
+        }
+
+        .preferred-checkbox input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            cursor: pointer;
+        }
+
+        .preferred-checkbox label {
+            margin: 0;
+            cursor: pointer;
+        }
+
+        .submit-btn {
+            width: 100%;
+            background: #C44569;
+            color: white;
+            font-family: 'Poppins', sans-serif;
+            font-size: 18px;
+            font-weight: 600;
+            padding: 16px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            transition: background 0.3s;
+            margin-top: 30px;
+        }
+
+        .submit-btn:hover {
+            background: #A33854;
+        }
+
+        @media (max-width: 768px) {
+            .form-row.two-col,
+            .form-row.three-col {
+                grid-template-columns: 1fr;
+            }
+
+            .header h1 {
+                font-size: 28px;
+            }
+
+            .form-content {
+                padding: 30px 20px;
+            }
+
+            .back-btn {
+                position: relative;
+                left: auto;
+                top: auto;
+                margin: 10px;
+                display: inline-block;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="staff-customers.html" class="back-btn" aria-label="Back to Customers">← Back to Customers</a>
+        <div class="header">
+            <img src="images/logo.png" alt="Emily Bakes Cakes logo" class="logo" />
+            <div class="header-text">
+                <h1>New Customer</h1>
+                <p>Add a new customer to the database</p>
+            </div>
+        </div>
+
+        <div class="form-content">
+            <form id="customerForm">
+                <div class="section">
+                    <h2 class="section-title"><span class="section-icon">👤</span> Personal Information</h2>
+
+                    <div class="form-row three-col">
+                        <div class="form-group">
+                            <label>First Name <span class="required">*</span></label>
+                            <input type="text" name="firstName" id="firstName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Middle Initial</label>
+                            <input type="text" name="middleInit" id="middleInit" maxlength="1">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Last Name <span class="required">*</span></label>
+                            <input type="text" name="lastName" id="lastName" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row two-col">
+                        <div class="form-group">
+                            <label>Company Name</label>
+                            <input type="text" name="companyName" id="companyName">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Customer Type <span class="required">*</span></label>
+                            <select name="custType" id="custType" required>
+                                <option value="">Select type...</option>
+                                <option value="1">Retail (Individual)</option>
+                                <option value="2">Corporate (Business)</option>
+                            </select>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Customer Status <span class="required">*</span></label>
+                            <select name="custStatus" id="custStatus" required>
+                                <option value="">Select status...</option>
+                                <option value="1" selected>Active</option>
+                                <option value="2">Inactive</option>
+                                <option value="3">Prospect</option>
+                                <option value="4">Do Not Contact</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title"><span class="section-icon">📍</span> Address Information</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Address Line 1 <span class="required">*</span></label>
+                            <input type="text" name="addrLine1" id="addrLine1" required>
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Address Line 2</label>
+                            <input type="text" name="addrLine2" id="addrLine2">
+                        </div>
+                    </div>
+
+                    <div class="form-row three-col">
+                        <div class="form-group">
+                            <label>State / Province</label>
+                            <input type="text" name="state" id="state">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Zip Code <span class="required">*</span></label>
+                            <input type="text" name="zipCode" id="zipCode" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Country <span class="required">*</span></label>
+                            <input type="text" name="country" id="country" value="USA" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title"><span class="section-icon">📞</span> Contact Information</h2>
+
+                    <div class="form-row three-col">
+                        <div class="form-group">
+                            <label>Mobile Phone <span class="required">*</span></label>
+                            <input type="tel" name="mobilePhone" id="mobilePhone" placeholder="(xxx) xxx-xxxx" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label>Work Phone</label>
+                            <input type="tel" name="workPhone" id="workPhone" placeholder="(xxx) xxx-xxxx">
+                        </div>
+
+                        <div class="form-group">
+                            <label>Home Phone</label>
+                            <input type="tel" name="homePhone" id="homePhone" placeholder="(xxx) xxx-xxxx">
+                        </div>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Email Address <span class="required">*</span></label>
+                            <input type="email" name="email" id="email" required>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="section">
+                    <h2 class="section-title"><span class="section-icon">📝</span> Additional Information</h2>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label>Comments</label>
+                            <textarea name="comments" id="comments" placeholder="Any notes about this customer..."></textarea>
+                        </div>
+                    </div>
+
+                    <div class="preferred-checkbox">
+                        <input type="checkbox" name="preferredCustomer" id="preferredCustomer">
+                        <label for="preferredCustomer">⭐ Preferred Customer <small style="color:#666;">(receives 10% discount on orders)</small></label>
+                    </div>
+                </div>
+
+                <button type="submit" class="submit-btn">Save Customer</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        const form = document.getElementById('customerForm');
+
+        function formatPhoneInput(input) {
+            input.addEventListener('input', function(e) {
+                const value = input.value.replace(/[^0-9]/g, '').slice(0, 10);
+                let formatted = value;
+                if (value.length > 6) {
+                    formatted = '(' + value.slice(0, 3) + ') ' + value.slice(3, 6) + '-' + value.slice(6);
+                } else if (value.length > 3) {
+                    formatted = '(' + value.slice(0, 3) + ') ' + value.slice(3);
+                } else if (value.length > 0) {
+                    formatted = '(' + value;
+                }
+                input.value = formatted;
+            });
+        }
+
+        formatPhoneInput(document.getElementById('mobilePhone'));
+        formatPhoneInput(document.getElementById('workPhone'));
+        formatPhoneInput(document.getElementById('homePhone'));
+
+        function getCustomers() {
+            return JSON.parse(localStorage.getItem('customers') || '[]');
+        }
+
+        function saveCustomers(customers) {
+            localStorage.setItem('customers', JSON.stringify(customers));
+        }
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            const firstName = document.getElementById('firstName').value.trim();
+            const lastName = document.getElementById('lastName').value.trim();
+            const mobilePhone = document.getElementById('mobilePhone').value.trim();
+            const custType = document.getElementById('custType').value;
+            const addrLine1 = document.getElementById('addrLine1').value.trim();
+            const zipCode = document.getElementById('zipCode').value.trim();
+            const country = document.getElementById('country').value.trim();
+            const email = document.getElementById('email').value.trim();
+
+            const errors = [];
+
+            if (!firstName) errors.push('First Name is required');
+            if (!lastName) errors.push('Last Name is required');
+            if (!mobilePhone) {
+                errors.push('Mobile Phone is required');
+            } else {
+                const phoneDigits = mobilePhone.replace(/[^0-9]/g, '');
+                if (phoneDigits.length !== 10) {
+                    errors.push('Mobile Phone must be 10 digits');
+                }
+            }
+            if (!custType) errors.push('Customer Type is required');
+            if (!addrLine1) errors.push('Address Line 1 is required');
+            if (!zipCode) {
+                errors.push('Zip Code is required');
+            } else if (!/^\d{5}(-\d{4})?$/.test(zipCode)) {
+                errors.push('Zip Code must be valid (5 digits or 5+4 format)');
+            }
+            if (!country) errors.push('Country is required');
+            if (!email) {
+                errors.push('Email is required');
+            } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+                errors.push('Email format is invalid');
+            }
+
+            if (errors.length > 0) {
+                alert('Please correct the following errors:\n\n' + errors.join('\n'));
+                return;
+            }
+
+            const customers = getCustomers();
+            const maxId = customers.reduce((max, c) => {
+                const num = parseInt(c.custId.replace('C', '')) || 0;
+                return num > max ? num : max;
+            }, 0);
+            const newId = 'C' + String(maxId + 1).padStart(3, '0');
+
+            const newCustomer = {
+                custId: newId,
+                firstName: firstName,
+                lastName: lastName,
+                middleInit: document.getElementById('middleInit').value.trim(),
+                companyName: document.getElementById('companyName').value.trim(),
+                custType: custType,
+                custStatus: document.getElementById('custStatus').value,
+                addrLine1: addrLine1,
+                addrLine2: document.getElementById('addrLine2').value.trim(),
+                state: document.getElementById('state').value.trim(),
+                zipCode: zipCode,
+                country: country,
+                mobilePhone: mobilePhone,
+                workPhone: document.getElementById('workPhone').value.trim(),
+                homePhone: document.getElementById('homePhone').value.trim(),
+                email: email,
+                comments: document.getElementById('comments').value.trim(),
+                preferredCustomer: document.getElementById('preferredCustomer').checked ? 'Y' : 'N'
+            };
+
+            customers.push(newCustomer);
+            saveCustomers(customers);
+
+            localStorage.setItem('lastNewCustomer', JSON.stringify(newCustomer));
+
+            window.location.href = 'customer-success.html';
+        });
+    </script>
+</body>
+</html>

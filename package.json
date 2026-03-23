@@ -8,6 +8,6 @@
     "start": "python -m http.server 8000 --bind 127.0.0.1"
   },
   "keywords": ["bakery", "cakes", "website"],
-  "author": "Emily Bakes Cakes",
+  "author": "Albina Aldreen & Adetutu Adenusi",
   "license": "MIT"
 }
