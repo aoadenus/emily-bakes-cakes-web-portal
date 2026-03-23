@@ -220,5 +220,45 @@ const unifiedMockData = {
             statusId: order.statusId,
             total: order.totalPrice
         }));
+    },
+
+    getCustomerName: function(customerId) {
+        const customer = this.customers.find(c => c.id === customerId);
+        return customer ? customer.name : 'Unknown Customer';
+    },
+
+    getProductName: function(productId) {
+        const products = {
+            1: 'Chocolate Layer Cake',
+            2: 'Vanilla Bean Cake',
+            3: 'Red Velvet Cake',
+            4: 'Lemon Doberge',
+            5: 'Carrot Cake',
+            6: 'Strawberry Shortcake',
+            7: 'German Chocolate',
+            8: 'Tiramisu Cake'
+        };
+        return products[productId] || 'Custom Cake';
+    },
+
+    getStatusDescription: function(statusId) {
+        const statuses = {
+            1: 'Confirmed',
+            2: 'Baking',
+            3: 'Decorating',
+            4: 'Ready for Pickup',
+            5: 'Picked Up',
+            6: 'Cancelled'
+        };
+        return statuses[statusId] || 'Unknown';
+    },
+
+    formatTime: function(timeStr) {
+        if (!timeStr) return 'TBD';
+        const [hours, minutes] = timeStr.split(':');
+        const h = parseInt(hours);
+        const ampm = h >= 12 ? 'PM' : 'AM';
+        const hour12 = h % 12 || 12;
+        return `${hour12}:${minutes} ${ampm}`;
     }
 };
