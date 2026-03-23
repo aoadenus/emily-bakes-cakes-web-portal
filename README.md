@@ -2,7 +2,7 @@
 
 A full-featured custom bakery ordering system with role-based staff dashboards, customer management, and order tracking.
 
-🔗 **[Live Demo](https://aoadenus.github.io/EBC-CURRENT/)**
+🔗 **[Live Demo](https://aoadenus.github.io/emily-bakes-cakes-web-portal/)**
 
 ## 🎂 Project Overview
 
