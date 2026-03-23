@@ -1,4 +1,4 @@
-﻿/* ============================================================================
+/* ============================================================================
    EMILY BAKES CAKES - MAIN STYLESHEET
    Pure HTML/CSS Version
    Colors: #F8EBD7 (cream), #C44569 (raspberry pink), #2B2B2B (charcoal)
@@ -189,7 +189,7 @@ body {
     left: 0;
     right: 0;
     bottom: 0;
-    background: url('/images/ebc-cake-images/hero-cake.jpg') center/cover;
+    background: url('../images/ebc-cake-images/hero-cake.jpg') center/cover;
     opacity: 0.35;
     z-index: 1;
 }
