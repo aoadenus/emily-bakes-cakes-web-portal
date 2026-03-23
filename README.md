@@ -110,7 +110,7 @@ The application includes mock data for demonstration purposes, stored in LocalSt
 **Albina Aldreen** & **Adetutu Adenusi**
 
 Created for **CIS 3343** with Professor **Bret J. Detillier**  
-**University of Houston** — 2025
+**University of Houston** — Presented November 23, 2025
 
 ---
 
