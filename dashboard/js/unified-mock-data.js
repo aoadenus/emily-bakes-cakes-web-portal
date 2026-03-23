@@ -167,20 +167,33 @@ const unifiedMockData = {
     ],
 
 
-    customers : 
-    [
-    {id: 1001, name: "Poppa Woody"},
-    {id: 1002, name: "Mama Buzz"},
-    {id: 1003, name: "Mike Hunt"},
-    {id: 1004, name: "Moe Lesther"},
-    {id: 1005, name: "Dickens Cider"}
-],
+    customers : [
+        {id: 1, name: "Sarah Johnson"},
+        {id: 2, name: "Michael Chen"},
+        {id: 3, name: "Emily Rodriguez"},
+        {id: 4, name: "David Kim"},
+        {id: 5, name: "Jessica Martinez"}
+    ],
 
-today : 
-[
-    {},
-    {},
-    {},
-],
+    metrics: {
+        today: {
+            lastOrderTime: "2:45 PM",
+            longestInProduction: "3.5 hrs",
+            avgCompletionTime: "2.1 hrs"
+        },
+        weekly: {
+            percentChange: 12
+        }
+    },
 
+    getRecentOrders: function(limit) {
+        const statusNames = {1: 'Confirmed', 2: 'Baking', 3: 'Decorating', 4: 'Ready', 5: 'Picked Up', 6: 'Cancelled'};
+        return this.orders.slice(0, limit).map(order => ({
+            id: order.id,
+            customer: this.customers.find(c => c.id === order.customerId)?.name || 'Unknown',
+            status: statusNames[order.statusId] || 'Unknown',
+            statusId: order.statusId,
+            total: order.totalPrice
+        }));
+    }
 };
