@@ -207,7 +207,10 @@ const unifiedMockData = {
             avgCompletionTime: "2.1 hrs"
         },
         weekly: {
-            percentChange: 12
+            percentChange: 12,
+            revenueByDay: [1850, 2100, 1920, 2450, 2680, 3200, 0],
+            ordersByStatus: [8, 12, 6, 4, 15],
+            topProducts: [18, 0, 0, 14, 0, 12, 0, 10, 0, 8]
         }
     },
 
