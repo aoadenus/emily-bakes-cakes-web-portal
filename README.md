@@ -22,7 +22,14 @@ This is a comprehensive web application for a custom cake bakery business, featu
 - **Charts**: Chart.js for dashboard visualizations
 - **Fonts**: Google Fonts (Playfair Display, Poppins, Open Sans)
 - **Design**: Responsive design with mobile-first approach
+  
+## 📄 Documentation
 
+- **Customer & Order Management System Prototype Demonstration.docx**  
+  Contains a visual walkthrough of the system with screenshots of the customer-facing website, custom order form, staff portal, dashboards, order management pages, customer management pages, product catalog, and reporting features. :contentReference[oaicite:0]{index=0}
+
+- **CIS 3343 Final Project.pdf**  
+  Contains the final team presentation for the Customer & Order Management System, presented on **November 23, 2025**, including the project overview, business requirements, system proposal, feasibility analysis, prototype demonstration, and summary. :contentReference[oaicite:1]{index=1}
 ## 📁 Project Structure
 
 ```
