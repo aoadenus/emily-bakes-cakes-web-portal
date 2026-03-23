@@ -3,15 +3,18 @@
 // Complete data model + dynamic logic
 // ====================================================================
 
+// DEMO MODE: Use fixed date so data is consistent for portfolio viewing
+const DEMO_DATE = '2025-11-23';
+
 // Get today's date at midnight for consistent calculations
 function getTodayStart() {
-    const today = new Date();
+    const today = new Date(DEMO_DATE);
     today.setHours(0, 0, 0, 0);
     return today;
 }
 
 function getWeekAgo() {
-    const weekAgo = new Date();
+    const weekAgo = new Date(DEMO_DATE);
     weekAgo.setDate(weekAgo.getDate() - 7);
     weekAgo.setHours(0, 0, 0, 0);
     return weekAgo;
@@ -332,7 +335,7 @@ function getTodaysOrderCount() {
 // Calculate weekly revenue (last 7 days)
 function getWeeklyRevenue() {
     const weekAgo = getWeekAgo();
-    const today = new Date();
+    const today = new Date(DEMO_DATE);
     today.setHours(23, 59, 59, 999);
     
     return dashboardData.orders
@@ -346,7 +349,7 @@ function getWeeklyRevenue() {
 // Get new customers this week
 function getNewCustomersThisWeek() {
     const weekAgo = getWeekAgo();
-    const today = new Date();
+    const today = new Date(DEMO_DATE);
     today.setHours(23, 59, 59, 999);
     
     return dashboardData.customers.filter(customer => {
@@ -375,7 +378,7 @@ function getStatusCounts() {
 // Get top products this week
 function getTopProductsThisWeek() {
     const weekAgo = getWeekAgo();
-    const today = new Date();
+    const today = new Date(DEMO_DATE);
     today.setHours(23, 59, 59, 999);
     
     const weekOrders = dashboardData.orders.filter(order => {
@@ -1077,7 +1080,7 @@ function populateTomorrowsScheduleCompact() {
 
 // Get tomorrow's orders
 function getTomorrowsOrders() {
-    const tomorrow = new Date();
+    const tomorrow = new Date(DEMO_DATE);
     tomorrow.setDate(tomorrow.getDate() + 1);
     tomorrow.setHours(0, 0, 0, 0);
 
