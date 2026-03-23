@@ -4,6 +4,14 @@ A full-featured custom bakery ordering system with role-based staff dashboards, 
 
 🔗 **[Live Demo](https://aoadenus.github.io/emily-bakes-cakes-web-portal/)**
 
+## 📸 Screenshots
+
+| Customer Homepage | Order Form | Manager Dashboard |
+|:-----------------:|:----------:|:-----------------:|
+| ![Homepage](screenshots/homepage.png) | ![Order Form](screenshots/order-form.png) | ![Dashboard](screenshots/manager-dashboard.png) |
+
+> *To add screenshots: Create a `screenshots/` folder and add `homepage.png`, `order-form.png`, and `manager-dashboard.png`*
+
 ## 🎂 Project Overview
 
 This is a comprehensive web application for a custom cake bakery business, featuring:
