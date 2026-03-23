@@ -909,13 +909,20 @@ function updateHeaderWithUserInfo() {
     }
 }
 
-// Check if user is authenticated
+// Check if user is authenticated - auto-login for demo/portfolio viewing
 function checkAuthentication() {
-    const staffUser = localStorage.getItem('staffUser');
+    let staffUser = localStorage.getItem('staffUser');
     if (!staffUser) {
-        // Not logged in - redirect to login page
-        window.location.href = '/staff-login.html';
-        return false;
+        // AUTO-LOGIN for demo purposes
+        const demoUser = {
+            id: 401,
+            name: "Demo Manager",
+            role: "manager",
+            email: "manager@emilybakescakes.com"
+        };
+        localStorage.setItem('staffUser', JSON.stringify(demoUser));
+        localStorage.setItem('staffRole', 'manager');
+        staffUser = JSON.stringify(demoUser);
     }
     return true;
 }
